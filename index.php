@@ -1,15 +1,9 @@
 <?php 
 
-$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+require "src/controllers/products.php";
 
-$segments = explode('/', $path);
+$controller = new Products;
 
-$controller = $segments[1];
-$action = $segments[2];
+$controller->index();
 
-require "src/controllers/$controller.php";
-
-$controller_object = new $controller;
-
-$controller_object->$action();
 ?>
